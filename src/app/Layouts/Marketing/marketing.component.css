@@ -1,0 +1,31 @@
+.ac-breakline {line-height:2px;background-color: #747474;margin: 5px;}
+h1 > span{
+    font-size: 14px;
+}
+h2 > span{
+    font-size: 12px;
+}
+.phone-breakline{
+    display: none;
+}
+.th-auto{
+    width: auto;
+}
+.th-fix-width{
+        width:110px;
+    }
+.th-fix-120{
+        width:120px;
+    }
+.th-5{
+    width:5%;
+}
+.th-25{
+    width:25%;
+}
+.th-30{
+    width:30%;
+}
+.th-40{
+    width:40%;
+}

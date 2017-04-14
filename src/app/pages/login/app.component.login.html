@@ -1,0 +1,36 @@
+<div class="loadingcover" *ngIf="showspinner">
+  <span class="spinner spinner-inline">
+    Loading...
+</span>
+<span class="">
+    登录中，请稍候...
+</span>
+
+</div>
+<div class="login-wrapper">
+ 
+  <form class="login" (ngSubmit)="onSubmit()">
+    
+    <label class="title">
+      总裁桌面
+    </label>
+    <div class="login-group">
+      <!--<div class="auth-source select">
+        <select id="login-auth-source-1">
+          <option>用户登录</option>
+          <option>管理员登录</option>
+        </select>
+      </div>-->
+      <input class="username" type="text" id="username" name="username" [(ngModel)]="user.username" placeholder="用户名..."  #name="ngModel" >
+      <input class="password" type="password" id="password" name="password" [(ngModel)]="user.password" placeholder="密码...">
+      <div class="checkbox">
+        <input type="checkbox" id="rememberme">
+        <label for="rememberme">
+          记住账号
+        </label>
+      </div>
+      <div class="error active" *ngIf="loginError">{{errorMessage}}</div>
+      <button type="submit" class="btn btn-primary">登录</button>
+    </div>
+  </form>
+</div>

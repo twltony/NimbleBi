@@ -1,0 +1,21 @@
+<h3>集团2017年4月销售情况表</h3><span>数据更新时间：</span>
+        <clr-datagrid>
+            <clr-dg-column>区域</clr-dg-column>
+            <clr-dg-column>计划销售额（万元）</clr-dg-column>
+            <clr-dg-column>实际销售套数（套）</clr-dg-column>
+            <clr-dg-column>实际销售面积（㎡）</clr-dg-column>
+            <clr-dg-column>实际销售金额（万元）</clr-dg-column>
+            <clr-dg-column>完成率</clr-dg-column>
+
+            <clr-dg-row *clrDgItems="let salestatus of MarketingDatas?.salesStatusAll" *ngIf="MarketingDatas">
+                <clr-dg-cell>{{salestatus.vBuname}}</clr-dg-cell>
+                <clr-dg-cell>{{user.name}}</clr-dg-cell>
+                <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+                <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+                <clr-dg-cell>
+                    <span class="color-square" [style.backgroundColor]="user.color"></span>
+                </clr-dg-cell>
+            </clr-dg-row>
+
+            <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+        </clr-datagrid>

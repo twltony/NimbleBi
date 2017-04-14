@@ -1,1 +1,158 @@
 /* You can add global styles to this file, and also import other style files */
+@media (min-width:1024px){
+    .table th{
+    font-size: 0.8em;
+    }
+    .table td{
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width:768px){
+    h2 > span{
+        font-size: 2px;
+    }
+    .h2-title{
+        text-align: center;
+        font-size: 16px;
+    }
+    th{
+        vertical-align: middle;
+        font-size: 10px;
+        font-weight: 200;
+        padding: 2px;
+    }
+    table{
+        margin: 5px 0 0 0; 
+    }
+    .table td{
+        padding: 5px 5px 5px;
+    }
+    .memo{
+         font-size: 0.5em;
+        color: #777;
+        width:100%;
+        text-align: center;
+    }
+}
+
+@media (max-width:514px){
+    .phone-breakline{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: block;
+    }
+     .memo{
+         font-size: 0.5em;
+        color: #777;
+        width:100%;
+        text-align: center;
+        
+    }
+}
+    
+    
+
+
+html{
+  font-size: 1rem;
+}
+.row table{
+
+}
+h1{
+  margin-top: 0.4em;
+}
+h2{
+  margin-top: 0.4em;
+}
+.table td, .table th{
+  /*font-size: 1rem;*/
+}
+.th-second{
+  min-width: 150px;
+}
+.break-line-right{
+    border-right-color: #747474;
+    border-right-style: solid;
+    border-right-width: thin;
+}
+.row-break{
+  margin-top:1rem;
+}
+.ac-breakline {line-height:2px;background-color: #747474;margin: 5px;}
+.back-button{
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    border-color: #007cbb;
+    background-color: #007cbb;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin: 6px 12px 6px 0;
+    -webkit-appearance: none !important;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    min-width: 72px;
+    max-width: 360px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    line-height: 36px;
+    letter-spacing: .12em;
+    font-size: 12px;
+    font-weight: 500;
+    height: 36px;
+    padding: 0 12px;
+}
+
+.td-button{
+  background-color: #DFF0D0;
+  width:30%;
+  font-size: 1em;
+}
+.table-th{
+  width:25%;
+}
+
+.font-xs{
+  font-size: x-small;
+}
+.font-s{
+  font-size: small;
+}
+. {
+  font-size: 1rem;
+}
+.font-l{
+  font-size: large;
+}
+.font-xl{
+  font-size: x-large;
+}
+
+.num-button{
+  color:#60B515;
+  text-decoration: underline;
+}
+
+.gird-font{
+  font-size: x-large;
+}
+
+.ac-main-content{
+  width:100%;
+  background-color:#fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+}
+.sumRow{
+    background-color: #89CBDF
+}

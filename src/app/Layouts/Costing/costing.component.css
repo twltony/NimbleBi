@@ -1,0 +1,5 @@
+/*:host(market-daysell) {overflow-y: scroll; overflow-x: hidden;}*/
+#gridContainer {
+    height: 440px;
+}
+

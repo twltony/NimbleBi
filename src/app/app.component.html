@@ -1,3 +1,24 @@
-<h1>
-  {{title}}
-</h1>
+<clr-main-container>
+  <clr-header class="header-6">
+    <div class="branding">
+      <a class="nav-link">
+        <clr-icon shape="network" class="is-inverse"></clr-icon>
+        <span class="title">总裁桌面</span>
+      </a>
+    </div>
+    <div class="header-nav" [clr-nav-level]="1">
+      <a class="nav-link" routerLinkActive="active" routerLink="Marketing"><span class="nav-text">营销主题</span></a>
+      <a class="nav-link" routerLinkActive="active" routerLink="Costing"><span class="nav-text">房产成本主题</span></a>
+      <a class="nav-link" routerLinkActive="active" routerLink="Tendering"><span class="nav-text">招采主题</span></a>
+    </div>
+    <div class="header-actions">
+      <a (click)="navGoBack()" class="nav-link nav-icon">
+        返回
+      </a>
+    </div>
+  </clr-header>
+
+
+  <router-outlet></router-outlet>
+
+</clr-main-container>

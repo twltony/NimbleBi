@@ -1,0 +1,8 @@
+/*:host(market-daysell) {overflow-y: scroll; overflow-x: hidden;}*/
+:host(market-daysell){
+  width:100%;
+  background-color:#fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+}

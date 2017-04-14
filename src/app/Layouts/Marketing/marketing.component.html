@@ -1,0 +1,202 @@
+ <nav class="subnav" [clr-nav-level]="2">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link">营销主题</a>
+      </li>
+      <div>
+        当前数据年份:
+        <clr-dropdown [clrMenuPosition]="'bottom-right'" *ngIf="marketingDatas?.currentDataYear">
+          <button class="dropdown-toggle btn btn-link" clrDropdownToggle>
+            {{marketingDatas.currentDataYear}}年
+            <clr-icon shape="caret down"></clr-icon>
+          </button>
+          <div class="dropdown-menu">
+            <label class="dropdown-header">选择年份</label>
+            <a clrDropdownItem *ngFor="let year of marketingDatas.yearList" value="year" (click)="onSelectYear(year)">{{year}}</a>
+          </div>
+        </clr-dropdown>
+      </div>
+    </ul>
+</nav>
+
+<div class="ac-main-content">
+  <!--上半部分-->
+  <div class="row">
+    <!--左-->
+    <div class="col-sm-6">
+      <!--表格-->
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div style="text-align: center">
+            <h2>销售情况<span>(含认购及签约)</span></h2>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12">
+          <table class="table table-noborder">
+            <thead>
+              <tr>
+                <th class="th-fix-width">时间维度</th>
+                <th class="th-25">目标销售额</th>
+                <th >实际销售额</th>
+                <th class="th-auto">完成率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{marketingDatas?.currentDataYear}}年<span class="font-xs">(截止{{marketingDatas?.currentDataMonth}}月)</span></td>
+                <td>{{marketingDatas?.salesStatus?.nYearPlan}}亿</td>
+                <td class="td-button num-button" (click)="navToDaySell(marketingDatas)">{{marketingDatas?.salesStatus?.nYearMoney}}亿</td>
+                <td class="left">
+                 <div class="progress labeled">
+                    <progress max="100" [value]="marketingDatas?.salesStatus?.nYearpercent" data-displayval="60%"></progress>
+                    <span>{{marketingDatas?.salesStatus?.nYearMoney/marketingDatas?.salesStatus?.nYearPlan | percent:'1.0-0'}}</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>{{marketingDatas?.currentDataMonth}}月</td>
+                <td>{{marketingDatas?.salesStatus?.nMonthPlan}}亿</td>
+                <td class=" td-button num-button" (click)="navToDaySell(marketingDatas)">{{marketingDatas?.salesStatus?.nMonthMoney}}亿</td>
+                <td class="left">
+                  <div class="progress labeled">
+                    <progress max="100" [value]="marketingDatas?.salesStatus?.nMonthPrecent" data-displayval="29%"></progress>
+                    <span>{{marketingDatas?.salesStatus?.nMonthMoney/marketingDatas?.salesStatus?.nMonthPlan | percent:'1.0-0'}}</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!---->
+      <div class="row row-break">
+        <div class="col-xs-7 break-line-right">
+          <h3 class="h2-title">{{marketingDatas?.salesDates?.nDaySalesTime | date:"M"}}月{{marketingDatas?.salesDates?.nDaySalesTime | date:"d"}}日销售  
+            <span class="num-button" (click)="navToDaySell(marketingDatas)">{{marketingDatas?.salesStatus?.nDaySales}}万元</span>
+          </h3>
+          <h3 class="h2-title">{{marketingDatas?.currentDataMonth}}月营销费用  <span class="num-button">{{marketingDatas?.yxFee}}万元</span></h3>
+          <div class="memo">
+            <label>数据更新时间：
+              {{marketingDatas?.salesDates?.nDaySalesTime | date:"M"}}月
+              {{marketingDatas?.salesDates?.nDaySalesTime | date:"dd"}}日
+              {{marketingDatas?.salesDates?.nDaySalesTime | date:"HH"}}:
+              {{marketingDatas?.salesDates?.nDaySalesTime | date:"mm"}}
+            </label>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <h3 class="h2-title">{{marketingDatas?.currentDataMonth}}月回款  <span class="num-button">{{marketingDatas?.hkMonth}}亿</span></h3>
+          <h3 class="h2-title">年回款   <span class="num-button">{{marketingDatas?.hkYear}}亿</span></h3>
+        </div>
+      </div>
+      <div class="row ac-breakline phone-breakline">
+        <div>　</div>
+      </div>
+    </div>
+    <!--右 柱状图-->
+    <div class="col-sm-6 ">
+      <columnchart [data]="marketingDatas?.columnChart" *ngIf="marketingDatas"></columnchart>
+    </div>
+  </div>
+  <div class="row ac-breakline">
+    <div>　</div>
+  </div>
+  <!--下半部分-->
+  <div class="row" style="height: 100%">
+    <!--左-->
+    <div class="col-sm-2">
+      <div class="row">
+        <div class="col-sm-12">
+          <div style="text-align: center">
+            <h2>总余货</h2>(含规划中)
+            <div class="row">
+              <div class="col-sm-12 gird-font"><h3>总套数</h3></div>
+              <div class="col-sm-12 gird-font num-button">{{marketingDatas?.yhZts}} 套</div>
+              <div class="col-sm-12 gird-font"><h3>总面积</h3></div>
+              <div class="col-sm-12 gird-font num-button">{{marketingDatas?.yhZmj}} 万m²</div>
+              <div class="col-sm-12 gird-font"><h3>预估货值</h3></div>
+              <div class="col-sm-12 gird-font num-button">{{marketingDatas?.yhZyghz}} 亿</div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--中-->
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-12">
+          <div style="text-align: center">
+            <h1>已取证余货</h1>
+            <div class="row">
+              <div class="col-xs-4 gird-font">套数</div>
+              <div class="col-xs-4 gird-font">面积²</div>
+              <div class="col-xs-4 gird-font">预估货值</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-4 gird-font num-button">{{marketingDatas?.qzYhts}}套</div>
+              <div class="col-xs-4 gird-font num-button">{{marketingDatas?.qzYhmj}}万m²</div>
+              <div class="col-xs-4 gird-font num-button">{{marketingDatas?.qzYhyghz}}亿</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>产品类型</th>
+              <th>套数(套)</th>
+              <th>面积(m²)</th>
+              <th>预估货值(亿)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let yhList of marketingDatas?.qzYhSumList">
+              <td>{{yhList.vType}}</td>
+              <td>{{yhList.nNum  | number:'1.0-0'}}</td>
+              <td>{{yhList.nArea | number:'1.0-0'}}</td>
+              <td>{{yhList.nMoney/100000000 | number:'1.0-1'}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-4">
+          <piechart [data]="marketingDatas?.pieChart" *ngIf="marketingDatas"></piechart>
+        </div>
+      </div>
+    </div>
+    <!--右-->
+    <div class="col-sm-3">
+      <div class="col-sm-12 col-md-12">
+        <div style="text-align: center">
+          <h3>销售业绩排行前十</h3>(含认购及签约)
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12">
+        <table class="table table-noborder">
+          <thead>
+          <tr>
+            <th class="th-5"></th>
+            <th>项目</th>
+            <th class="td-button">完成率</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let rank of marketingDatas?.rankTopTen">
+            <td>{{rank?.rank}}</td>
+            <td>{{rank?.name}}</td>
+            <td class="left td-button">
+              <div class="progress labeled">
+                <progress max="100" [value]="rank?.rate*100" data-displayval="60%"></progress>
+                <span>{{rank?.rate  | percent:'1.0-0'}}</span>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+<!--<ac-marketsituationsum #marketsituationsum></ac-marketsituationsum>-->

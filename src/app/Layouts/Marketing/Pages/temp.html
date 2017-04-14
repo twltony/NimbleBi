@@ -1,0 +1,172 @@
+<table>
+          <thead>
+            <tr>
+              <th rowspan="2" style="min-width: 100px;">区域</th>
+              <th colspan="5">一月</th>
+              <th colspan="5">二月</th>
+              <th colspan="5">三月</th>
+              <th colspan="5">四月</th>
+              <th colspan="5">五月</th>
+              <th colspan="5">六月</th>
+              <th colspan="5">七月</th>
+              <th colspan="5">八月</th>
+              <th colspan="5">九月</th>
+              <th colspan="5">十月</th>
+              <th colspan="5">十一月</th>
+              <th colspan="5">十二月</th>
+              <th colspan="5">全年</th>
+            </tr>
+            <tr class="secondline">
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+              <th>计划销售额（万元）</th>
+              <th>实际销售套数（套）</th>
+              <th>实际销售面积（㎡）</th>
+              <th>实际销售金额（万元）</th>
+              <th>完成率</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of datas?.yearList;let last = last" [ngClass]="{'sumRow':last}">
+              <td class="freeze-col">{{data.vBuname}}</td>
+              <td>{{data.nJanPlan | round }}</td>
+              <td>{{data.nJanNum  | round}}</td>
+              <td>{{data.nJanArea | round}}</td>
+              <td>{{data.nJanMoney| round}}</td>
+              <td *ngIf="(last || data.nJanPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nJanPlan != 0 )">{{data.nJanMoney/data.nJanPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nFebPlan | round }}</td>
+              <td>{{data.nFebNum | round }}</td>
+              <td>{{data.nFebArea | round }}</td>
+              <td>{{data.nFebMoney | round }}</td>
+              <td  *ngIf="(last || data.nFebPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nFebPlan != 0 )">{{data.nFebMoney/data.nFebPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nMarPlan | round }}</td>
+              <td>{{data.nMarNum | round }}</td>
+              <td>{{data.nMarArea | round }}</td>
+              <td>{{data.nMarMoney | round }}</td>
+              <td  *ngIf="(last || data.nMarPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nMarPlan != 0 )">{{data.nMarMoney/data.nMarPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nAprPlan | round }}</td>
+              <td>{{data.nAprNum | round }}</td>
+              <td>{{data.nAprArea | round }}</td>
+              <td>{{data.nAprMoney | round }}</td>
+              <td  *ngIf="(last || data.nAprPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nAprPlan != 0 )">{{data.nAprMoney/data.nAprPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nMayPlan | round }}</td>
+              <td>{{data.nMayNum | round }}</td>
+              <td>{{data.nMayArea | round }}</td>
+              <td>{{data.nMayMoney | round }}</td>
+              <td  *ngIf="(last || data.nMayPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nMayPlan != 0 )">{{data.nMayMoney/data.nMayPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nJunePlan | round }}</td>
+              <td>{{data.nJuneNum | round }}</td>
+              <td>{{data.nJuneArea | round }}</td>
+              <td>{{data.nJuneMoney | round }}</td>
+              <td  *ngIf="(last || data.nJunePlan == 0 )"></td>
+              <td *ngIf="(!last && data.nJunePlan != 0 )">{{data.nJuneMoney/data.nJunePlan| percent:'1.0-0'}}</td>
+              <td>{{data.nJulyPlan | round }}</td>
+              <td>{{data.nJulyNum | round }}</td>
+              <td>{{data.nJulyArea | round }}</td>
+              <td>{{data.nJulyMoney | round }}</td>
+              <td  *ngIf="(last || data.nJulyPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nJulyPlan != 0 )">{{data.nJulyMoney/data.nJulyPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nAugPlan | round }}</td>
+              <td>{{data.nAugNum | round }}</td>
+              <td>{{data.nAugArea | round }}</td>
+              <td>{{data.nAugMoney | round }}</td>
+              <td  *ngIf="(last || data.nAugPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nAugPlan != 0 )">{{data.nAugMoney/data.nAugPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nSeptPlan | round }}</td>
+              <td>{{data.nSeptNum | round }}</td>
+              <td>{{data.nSeptArea | round }}</td>
+              <td>{{data.nSeptMoney | round }}</td>
+              <td  *ngIf="(last || data.nSeptPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nSeptPlan != 0 )">{{data.nSeptMoney/data.nSeptPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nOctPlan | round }}</td>
+              <td>{{data.nOctNum | round }}</td>
+              <td>{{data.nOctArea | round }}</td>
+              <td>{{data.nOctMoney | round }}</td>
+              <td  *ngIf="(last || data.nOctPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nOctPlan != 0 )">{{data.nOctMoney/data.nOctPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nNovPlan | round }}</td>
+              <td>{{data.nNovNum | round }}</td>
+              <td>{{data.nNovArea | round }}</td>
+              <td>{{data.nNovMoney | round }}</td>
+              <td  *ngIf="(last || data.nNovPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nNovPlan != 0 )">{{data.nNovMoney/data.nNovPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nDecPlan | round }}</td>
+              <td>{{data.nDecNum | round }}</td>
+              <td>{{data.nDecArea | round }}</td>
+              <td>{{data.nDecMoney | round }}</td>
+              <td  *ngIf="(last || data.nDecPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nDecPlan != 0 )">{{data.nDecMoney/data.nDecPlan| percent:'1.0-0'}}</td>
+              <td>{{data.nYearPlan | round }}</td>
+              <td>{{data.nYearNum | round }}</td>
+              <td>{{data.nYearArea | round }}</td>
+              <td>{{data.nYearMoney | round }}</td>
+              <td  *ngIf="(last || data.nYearPlan == 0 )"></td>
+              <td *ngIf="(!last && data.nYearPlan != 0 )">{{data.nYearMoney/data.nYearPlan| percent:'1.0-0'}}</td>
+            </tr>
+          </tbody>
+
+        </table>
+      
