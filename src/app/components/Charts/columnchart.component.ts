@@ -29,8 +29,7 @@ import 'highcharts/adapters/standalone-framework.src';
 export class Columnchart implements AfterViewInit, OnDestroy {
   @ViewChild('columnchart') public chartEl: ElementRef;
   @Input() 
-  data: MarketingDatas[];
-
+  data: Object;
   constructor(private elRef: ElementRef){}
 
   ngOnInit() {
@@ -41,17 +40,21 @@ export class Columnchart implements AfterViewInit, OnDestroy {
 
   public ngAfterViewInit() {
     let chart = new ColumnChartData;
-    let title =(this.data as any).chartTitle
+    // let title =(this.data as any).chartTitle
+    let title =(this.data as any)._chartTitle
+    
     //系列
-    let series = (this.data as any).chartSeries;
-    console.log(series);
+    // let series = (this.data as any).chartSeries;
+    let series = (this.data as any)._series;
     //Y轴数据
     let categories = [];
-    let yDatas = (this.data as any).chartData
-    for (var yData in yDatas){
-      categories.push(yDatas[yData].vMm)
-    }
-    
+    // let yDatas = (this.data as any).chartData
+    // console.log((this.data as any).categories)
+    // if(yDatas.categories==null)
+    // for (var yData in yDatas){
+    //   categories.push(yDatas[yData].vMm)
+    // }
+    categories=(this.data as any).categories
 
     //配置图形            
     let opts: any = {

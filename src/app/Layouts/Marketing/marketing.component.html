@@ -94,8 +94,9 @@
       </div>
     </div>
     <!--右 柱状图-->
-    <div class="col-sm-6 ">
-      <columnchart [data]="marketingDatas?.columnChart" *ngIf="marketingDatas"></columnchart>
+    <div class="col-sm-6 " *ngIf="marketingDatas">
+      <!--<columnchart [data]="marketingDatas?.columnChart" *ngIf="marketingDatas"></columnchart>-->
+      <columnchart [data]="columnChartData" ></columnchart>
     </div>
   </div>
   <div class="row ac-breakline">

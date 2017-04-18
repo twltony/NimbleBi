@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { MarketingDatas } from '../../Modals/marketing'
 import { BaseDataService  } from '../../Services/basedata.service'
 import { MarketingService } from './marketing.services'
+import { ColumnChartData } from '../../Modals/columnchart'
+import { Series } from '../../Modals/series'
 
 
 @Component({
@@ -18,6 +20,7 @@ import { MarketingService } from './marketing.services'
 export class Marketing implements OnInit{
  marketingDatas : MarketingDatas[];
  selectedYear;
+ columnChartData = new ColumnChartData();
 
     constructor(
       private router: Router,
@@ -30,6 +33,15 @@ export class Marketing implements OnInit{
       this.marketingService.getMarketingMainData()
         .then(marketingDatas => {
           this.marketingDatas = marketingDatas;
+          let columndata = (marketingDatas as any).columnChart
+          let series = (columndata as any).chartSeries
+          let chartdatas =  (columndata as any).chartData as Object[]
+          this.columnChartData.series = series
+          this.columnChartData.chartTitle = (columndata as any).chartTitle
+          for(let cat in chartdatas){
+            this.columnChartData.categories.push((chartdatas[cat] as any).vMm);
+          }
+         
       })
    }
   
@@ -40,5 +52,9 @@ export class Marketing implements OnInit{
       this.selectedYear=year;
       console.log(year);
     } 
+
+    columnChatData(){
+      (this.marketingDatas as any).columnChart
+    }
 
 }

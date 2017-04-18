@@ -21,127 +21,130 @@
   </nav>
   
   <div class="ac-main-content">
-    
-  <dx-data-grid
-    id="gridContainer"
-    [dataSource]="datas?.yearList"
-    [allowColumnReordering]="true"
-    [allowColumnResizing]="true"
-    [wordWrapEnabled]="true"
-    [columnAutoWidth]="true"
-    >
-    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+  <div class="col-sm-12 " *ngIf="isDataAvailable" >
+      <columnchart [data]="columnChartData" ></columnchart>
+  </div>
+  <div class="col-sm-12">
+    <dx-data-grid style="padding-left: 20px"
+      id="gridContainer"
+      [dataSource]="datas?.yearList"
+      [allowColumnReordering]="false"
+      [allowColumnResizing]="false"
+      [wordWrapEnabled]="true"
+      [columnAutoWidth]="true"
+      >
+      <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
 
-    <dxi-column [fixed]="true" [width]="100" caption="区域名称" dataField="vBuname"></dxi-column>
-    <dxi-column  caption="一月">
-      <dxi-column caption="计划销售额（万元）" dataField="nJanPlan" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nJanNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nJanArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nJanMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="janRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="二月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nFebPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nFebNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nFebArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nFebMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="febRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="三月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nMarPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nMarNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nMarArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nMarMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="marApre" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="四月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nAprPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nAprNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nAprArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nAprMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="aprRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="五月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nMayPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nMayNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nMayArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nMayMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="mayRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="六月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nJunePlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nJuneNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nJuneArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nJuneMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="juneRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="七月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nJulyPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nJulyNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nJulyArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nJulyMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="julyRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="八月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nAugPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nAugNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nAugArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nAugMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="augRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="九月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nSeptPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nSeptNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nSeptArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nSeptMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="septRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="十月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nOctPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nOctNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nOctArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nOctMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="octRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="十一月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nNovPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nNovNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nNovArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nNovMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="novRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="十二月">
-      <dxi-column caption="计划销售额（万元）"  dataField="nDecPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nDecNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nDecArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nDecMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="decRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    
-    <dxi-column  caption="全年">
-      <dxi-column caption="计划销售额（万元）"  dataField="nYearPlan" [width]="90"></dxi-column>
-      <dxi-column caption="实际销售套数（套）" dataField="nYearNum" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售面积（㎡）" dataField="nYearArea" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="实际销售金额（万元）" dataField="nYearMoney" [width]="90" cellTemplate="round"></dxi-column>
-      <dxi-column caption="完成率"  [calculateCellValue]="yearRate" [width]="90" cellTemplate="percent"></dxi-column>
-    </dxi-column>
-    <div *dxTemplate="let field of 'percent'">
-      <span>{{field.value | percent:'1.0-0'}}</span>
-     </div>
-    <div *dxTemplate="let field of 'round'">
-      <span>{{field.value | round}}</span>
-     </div>
-</dx-data-grid>
-
+      <dxi-column [fixed]="true" [width]="100" caption="区域名称" dataField="vBuname"></dxi-column>
+      <dxi-column  caption="一月">
+        <dxi-column caption="计划销售额（万元）" dataField="nJanPlan" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nJanNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nJanArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nJanMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="janRate" [width]="90"></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="二月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nFebPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nFebNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nFebArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nFebMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="febRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="三月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nMarPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nMarNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nMarArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nMarMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="marRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="四月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nAprPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nAprNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nAprArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nAprMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="aprRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="五月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nMayPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nMayNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nMayArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nMayMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="mayRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="六月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nJunePlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nJuneNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nJuneArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nJuneMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="juneRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="七月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nJulyPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nJulyNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nJulyArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nJulyMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="julyRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="八月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nAugPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nAugNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nAugArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nAugMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="augRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="九月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nSeptPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nSeptNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nSeptArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nSeptMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="septRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="十月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nOctPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nOctNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nOctArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nOctMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="octRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="十一月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nNovPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nNovNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nNovArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nNovMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="novRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="十二月">
+        <dxi-column caption="计划销售额（万元）"  dataField="nDecPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nDecNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nDecArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nDecMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="decRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      
+      <dxi-column  caption="全年">
+        <dxi-column caption="计划销售额（万元）"  dataField="nYearPlan" [width]="90"></dxi-column>
+        <dxi-column caption="实际销售套数（套）" dataField="nYearNum" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售面积（㎡）" dataField="nYearArea" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="实际销售金额（万元）" dataField="nYearMoney" [width]="90" cellTemplate="round"></dxi-column>
+        <dxi-column caption="完成率"  [calculateDisplayValue]="yearRate" [width]="90" ></dxi-column>
+      </dxi-column>
+      <div *dxTemplate="let field of 'percent'">
+        <span>{{field.value | percent:'1.0-0'}}</span>
+      </div>
+      <div *dxTemplate="let field of 'round'">
+        <span>{{field.value | round}}</span>
+      </div>
+    </dx-data-grid>
+  </div>
 </div>
